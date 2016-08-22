@@ -20,16 +20,16 @@
 import UIKit
 
 class BXBox: UIView {
-
+    
+    
+    /// tab子页面
     var childViews : [UIView]?{
         didSet {
             setup()
         }
-        
-        
     }
     
-    var previousIndex = 0
+    /// 第几页
     var index : Int = 0 {
         
         didSet{
@@ -39,12 +39,24 @@ class BXBox: UIView {
             previousIndex = index
         }
         
+    }
+    
+    //MARK: 新增tab子页面
+    func appendChild(child:UIView) {
         
+        child.frame = self.bounds
+        self.addSubview(child)
+        child.hidden = true
+        childViews?.append(child)
         
         
     }
     
-    func setup() {
+    
+    //MARK: - 私有方法
+    private var previousIndex = 0
+    
+    private func setup() {
         
         var i = 0
         
@@ -64,5 +76,7 @@ class BXBox: UIView {
         
     }
     
-
+    
+    
+    
 }
